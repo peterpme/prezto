@@ -22,9 +22,9 @@ HELPDIR=/usr/local/share/zsh/help
 [ -f ~/z/z.sh ] && source ~/z/z.sh
 
 # fnm https://github.com/Schniz/fnm
-# eval "$(fnm env --multi)"
+eval "$(fnm env --multi)"
 
-# # npmbin instead of global node modules https://github.com/Schniz/fnm/issues/109
+# npmbin instead of global node modules https://github.com/Schniz/fnm/issues/109
 # npmig() {
 #   cd $HOME/npmbin
 #   npm install --save $@
