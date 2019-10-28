@@ -25,9 +25,23 @@ HELPDIR=/usr/local/share/zsh/help
 eval "$(fnm env --multi)"
 
 # npmbin instead of global node modules https://github.com/Schniz/fnm/issues/109
-# npmig() {
-#   cd $HOME/npmbin
-#   npm install --save $@
-#   cd -
-# }
-# export PATH=$HOME/npmbin/node_modules/.bin
+yg() {
+  cd $HOME/npmbin
+  yarn add $@
+  cd -
+}
+
+# Setting ag as the default source for fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
