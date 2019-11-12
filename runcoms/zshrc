@@ -22,7 +22,7 @@ HELPDIR=/usr/local/share/zsh/help
 [ -f ~/z/z.sh ] && source ~/z/z.sh
 
 # fnm https://github.com/Schniz/fnm
-eval "$(fnm env --multi)"
+eval "$(fnm env --multi --use-on-cd)"
 
 # npmbin instead of global node modules https://github.com/Schniz/fnm/issues/109
 yg() {
@@ -32,7 +32,8 @@ yg() {
 }
 
 # Setting ag as the default source for fzf
-export FZF_DEFAULT_COMMAND='ag -g ""'
+# export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -42,6 +43,3 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
