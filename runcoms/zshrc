@@ -26,7 +26,7 @@ HELPDIR=/usr/local/share/zsh/help
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # z https://github.com/rupa/z
-[ -f ~/z/z.sh ] && source ~/z/z.sh
+. /usr/local/etc/profile.d/z.sh
 
 # fnm https://github.com/Schniz/fnm
 eval "$(fnm env --multi --use-on-cd)"
