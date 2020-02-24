@@ -5,12 +5,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Source Prezto. https://github.com/sorin-ionescu/prezto
 if [[ -s "${ZDOTDIR:-$HOME}/dotfiles/prezto/init.zsh" ]]; then
@@ -28,12 +24,16 @@ HELPDIR=/usr/local/share/zsh/help
 # z https://github.com/rupa/z
 . /usr/local/etc/profile.d/z.sh
 
+# some powerline10k shit
+FNM_INTERACTIVE_CLI=false
+FNM_LOGLEVEL=quiet
+
 # fnm https://github.com/Schniz/fnm
-eval "$(fnm env --multi --use-on-cd)"
+eval "$(fnm env --multi --use-on-cd)" >/dev/null
 
 # npmbin instead of global node modules https://github.com/Schniz/fnm/issues/109
 yg() {
-  cd $HOME/npmbin
+  cd $HOME/dotfiles/npmbin
   yarn add $@
   cd -
 }
@@ -50,6 +50,3 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && \
     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
         eval "$("$BASE16_SHELL/profile_helper.sh")"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
